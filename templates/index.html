@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Listado de personas</h1>
+
+<a href="/create" class="btn btn-success">Nuevo registro</a>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Fecha Nac</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for persona in personas %}
+        <tr>
+            <td>{{ persona.id }}</td>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.telefono }}</td>
+            <td>{{ persona.fecha_nac }}</td>
+            <td><a href="/edit/{{ persona.id }}" class="btn btn-warning">Editar</a></td>
+            <td><a href="/delete/{{ persona.id }}" class="btn btn-danger"
+                    onclick="return(confirm('¿Esta seguro?'))">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
